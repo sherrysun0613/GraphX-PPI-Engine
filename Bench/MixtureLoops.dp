@@ -1,0 +1,32 @@
+     bool  b, c;
+     bool  c1, c2;
+
+     b = true;   
+     c = Bernoulli(0.5);  
+     while (c){   
+       b = !b;    
+       c = Bernoulli(0.5);  
+     }
+
+     Infer(b);    
+
+     if(b){             
+       c1 = Bernoulli(0.5);  
+       c2 = Bernoulli(0.5);  
+
+       while(!(c1||c2)){    
+        c1 = Bernoulli(0.5);   
+        c2= Bernoulli(0.5);    
+       }
+     }
+     else{
+        c1 = true;       
+        c2 = Bernoulli(0.5);   
+
+       while(c2){    
+        c1 =!c1;        
+        c2= Bernoulli(0.5);   
+       }
+     }
+     
+      Infer(ALL);   

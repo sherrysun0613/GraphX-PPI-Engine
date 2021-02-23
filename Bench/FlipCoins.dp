@@ -1,0 +1,10 @@
+bool b, c; 
+
+   b = true;   
+   c = Bernoulli(0.5);  
+  while (c){           
+     b = !b;            
+     c = Bernoulli(0.5);  
+}
+
+   Infer(ALL);   

@@ -1,0 +1,109 @@
+     int  y,i ;
+     bool x ;
+
+     int    n=50;
+    double [] dataPrior = read(dataPrior.txt);
+    double []dataParams1  = read(dataParams1.txt) ;
+    double []dataParams2  = read(dataParams2.txt) ;
+    double []dataParams3  = read(dataParams3.txt) ;
+    double []dataParams4  = read(dataParams4.txt) ;
+    double []dataParams5  = read(dataParams5.txt) ;
+    double []dataParams6  = read(dataParams6.txt) ;
+    double []dataParams7  = read(dataParams7.txt) ;
+    double []dataParams8  = read(dataParams8.txt) ;
+    double []dataParams9  = read(dataParams9.txt) ;
+    double []dataParams10 = read(dataParams10.txt) ;
+    int[] dataX = read(dataX.txt);
+
+     y = Discrete(dataPrior);   
+
+    if(y<5){                  
+        if(y<2){                
+            //y==1
+            if(y==1){         
+                for ( i in n){   
+                     x = Bernoulli(dataParams2[i]); 
+                     observe(x == dataX[i]);   
+                }
+            }
+            //y==0 
+            else{
+                for (i in n){            
+                     x = Bernoulli(dataParams1[i]);  
+                     observe(x == dataX[i]);  
+                }
+            }
+        }
+        else{
+            //y==2
+            if(y==2){         
+                for (i in n){   
+                    x = Bernoulli(dataParams3[i]);  
+                    observe(x == dataX[i]);  
+                }
+            }
+            else{
+                //y == 3
+                if(y==3){              
+                     for (i in n){      
+                         x = Bernoulli(dataParams4[i]); 
+                         observe(x == dataX[i]);  
+                     }
+                }
+                //y==4
+                else{
+                     for (i in n){                   
+                         x = Bernoulli(dataParams5[i]);  
+                         observe(x == dataX[i]);   
+                     }
+                }
+            }
+        }
+    }
+    else{
+        if(y<7){   
+            //y==5
+            if(y==5){   
+                 for (i in n){   
+                     x = Bernoulli(dataParams6[i]);  
+                     observe(x == dataX[i]);   
+                 }
+            }
+            //y==6
+            else{
+                 for (i in n){   
+                     x = Bernoulli(dataParams7[i]);  
+                     observe(x == dataX[i]);   
+                 }
+            }
+        }
+        else{
+            //y==7
+            if(y==7){   
+                 for (i in n){   
+                     x = Bernoulli(dataParams6[i]);  
+                     observe(x == dataX[i]);  
+                 }
+
+            }
+            else{
+                //y == 8
+                if(y==8){       
+                     for (i in n){    
+                         x = Bernoulli(dataParams9[i]);  
+                         observe(x == dataX[i]);   
+                     }
+                }
+                //y==9
+                else{
+                     for (i in n){   
+                         x = Bernoulli(dataParams10[i]);  
+                         observe(x == dataX[i]);  
+                     }
+                }
+            }
+        }
+
+    }
+    
+Infer(y);  

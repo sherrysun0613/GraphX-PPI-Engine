@@ -1,0 +1,17 @@
+     bool  b, c;
+     bool  c1, c2;
+
+     b = true;      
+     c = Bernoulli(0.5);  
+     c1 = Bernoulli(0.5);  
+     c2 = Bernoulli(0.5);  
+     
+     while (c&&!(c1||c2)){  
+       b = !b;                 
+       c = Bernoulli(0.5);  
+
+       c1=Bernoulli(0.5);   
+       c2= Bernoulli(0.5);   
+     }
+
+     Infer(ALL);   

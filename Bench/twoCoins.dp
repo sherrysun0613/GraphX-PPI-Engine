@@ -1,0 +1,6 @@
+ bool   c1,c2;
+     c1=Bernoulli(0.5);
+     c2= Bernoulli(0.5);
+    observe(!(c1&&c2));
+        
+         Infer(b);

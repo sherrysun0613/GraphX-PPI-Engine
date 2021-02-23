@@ -1,0 +1,150 @@
+     bool isEffective1，x;
+     int    probIfTreated2, probIfControl;
+     int i,j;
+
+     int  n = 5;
+     double[] treated2 = {0.2862, 0.1352, 0.304, 0.1044, 0.1702};
+     double[] control = {0.05, 0.20, 0.25, 0.28 , 0.12};
+     bool [] controled = read(controled.txt);
+     bool [] treated = read(treated.txt);
+             
+    //controled   0	0	1	1	1
+    //treated       0	1	0	0	1
+
+     isEffective1 = Bernoulli(0.5);
+
+     if(isEffective1){
+         
+          probIfTreated2 = Discrete(treated2);
+          if(probIfTreated2<2){
+               //z==0
+               if(probIfTreated2==0){
+                    for(i in n){
+                          x =  Bernoulli(0.001);
+                          observe(x==controled[i]);
+                    }
+                    for(j in n){
+                          x =  Bernoulli(0.001);
+                          observe(x==treated[j]);
+                    }
+               }
+               //z==1
+               else{
+                    for(i in n){
+                          x =  Bernoulli(0.25);
+                          observe(x==controled[i]);
+                    }
+                    for(j in n){
+                          x =  Bernoulli(0.25);
+                          observe(x==treated[j]);
+                    }
+               }
+          }
+          else{
+               //z == 2
+               if(probIfTreated2==2){
+                    for(i in n){
+                          x =  Bernoulli(0.50);
+                          observe(x==controled[i]);
+                    }
+                    for(j in n){
+                          x =  Bernoulli(0.50);
+                          observe(x==treated[j]);
+                    }
+               }
+               else{
+                    //z==3
+                    if(probIfTreated2==3){
+                         for(i in n){
+                               x =  Bernoulli(0.75);
+                               observe(x==controled[i]);
+                         }
+                         for(j in n){
+                               x =  Bernoulli(0.75);
+                               observe(x==treated[j]);
+                         }
+                    }
+                    //z==4
+                    else{
+                         for(i in n){
+                               x =  Bernoulli(0.999);
+                               observe(x==controled[i]);
+                         }
+                         for(j in n){
+                               x =  Bernoulli(0.999);
+                               observe(x==treated[j]);
+                         }
+                    }
+                    
+               }
+          }
+
+     }
+     else{
+          probIfControl  =  Discrete(control);
+          if(probIfControl<2){
+               //z==0
+               if(probIfControl==0){
+                    for(i in n){
+                          x =  Bernoulli(0.001);
+                          observe(x==controled[i]);
+                    }
+                    for(j in n){
+                          x =  Bernoulli(0.001);
+                          observe(x==treated[j]);
+                    }
+               }
+               //z==1
+               else{
+                    for(i in n){
+                          x =  Bernoulli(0.25);
+                          observe(x==controled[i]);
+                    }
+                    for(j in n){
+                          x =  Bernoulli(0.25);
+                          observe(x==treated[j]);
+                    }
+               }
+
+          }
+          else{
+               //z == 2
+               if(probIfControl==2){
+                    for(i in n){
+                          x =  Bernoulli(0.50);
+                          observe(x==controled[i]);
+                    }
+                    for(j in n){
+                          x =  Bernoulli(0.50);
+                          observe(x==treated[j]);
+                    }
+               }
+               else{
+                    //z==3
+                    if(probIfControl==3){
+                         for(i in n){
+                               x =  Bernoulli(0.75);
+                               observe(x==controled[i]);
+                         }
+                         for(j in n){
+                               x =  Bernoulli(0.75);
+                               observe(x==treated[j]);
+                         }
+                    }
+                    //z==4
+                    else{
+                         for(i in n){
+                               x =  Bernoulli(0.999);
+                               observe(x==controled[i]);
+                         }
+                         for(j in n){
+                               x =  Bernoulli(0.999);
+                               observe(x==treated[j]);
+                         }
+                    }
+                    
+               }
+          }
+     }
+
+Infer(ALL);
